@@ -1,0 +1,8 @@
+arb-dir: lib/res/strings
+template-arb-file: strings_en.arb
+output-dir: lib/res/gen
+output-class: ThocAuthLocalizations
+output-localization-file: thoc_auth_localizations.dart
+synthetic-package: false
+preferred-supported-locales: en
+nullable-getter: false

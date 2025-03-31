@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:thoc_auth/presentation/login/login_iss.dart';
+import 'package:thoc_auth/presentation/login/ise/login_ise.dart';
+import 'package:thoc_auth/utils/helpers.dart';
 import 'package:thoc_widgets/thoc_widgets.dart';
 
 class LoginScreenContent extends StatefulWidget {
@@ -21,6 +22,13 @@ class _LoginScreenContentState extends State<LoginScreenContent> {
   final _passwordController = TextEditingController();
 
   @override
+  void dispose() {
+    super.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return FocusScaffold(
       body: Padding(
@@ -28,7 +36,7 @@ class _LoginScreenContentState extends State<LoginScreenContent> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            DefaultTextFieldLabel(text: "Email Address"),
+            DefaultTextFieldLabel(text: context.authStrings.email_address),
             const SmallSpacer(),
             DefaultInputTextField(
               controller: _emailController,
@@ -36,7 +44,7 @@ class _LoginScreenContentState extends State<LoginScreenContent> {
               textInputAction: TextInputAction.next,
             ),
             const RegularSpacer(),
-            DefaultTextFieldLabel(text: "Password"),
+            DefaultTextFieldLabel(text: context.authStrings.password),
             const SmallSpacer(),
             DefaultInputTextField(
               controller: _passwordController,
@@ -44,7 +52,7 @@ class _LoginScreenContentState extends State<LoginScreenContent> {
             ),
             MediumSpacer(),
             DefaultPrimaryButton(
-              text: "Sign in",
+              text: context.authStrings.login_screen_sign_in,
               loading: widget.state.loginState.isLoading,
               onClick: () {
                 final intent = LoginIntent.loginPressed(

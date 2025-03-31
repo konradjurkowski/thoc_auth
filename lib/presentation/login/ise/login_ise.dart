@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'login_iss.freezed.dart';
+part 'login_ise.freezed.dart';
 
 @freezed
 sealed class LoginIntent with _$LoginIntent {
