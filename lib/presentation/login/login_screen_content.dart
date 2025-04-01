@@ -44,7 +44,7 @@ class _LoginScreenContentState extends State<LoginScreenContent> {
       appBar: DefaultTopBar(title: context.authStrings.login_screen_title),
       bottomNavigationBar: AuthFooter(
           firstPart: context.authStrings.login_screen_new_to_app(widget.state.appName),
-          secondPart: context.authStrings.login_screen_create_account,
+          secondPart: " ${context.authStrings.login_screen_create_account}",
           onClick: () => widget.onIntent(LoginIntent.createAccountPressed()),
       ),
       body: Padding(
