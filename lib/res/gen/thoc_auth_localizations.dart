@@ -114,8 +114,8 @@ abstract class ThocAuthLocalizations {
   /// No description provided for @login_screen_new_to_app.
   ///
   /// In en, this message translates to:
-  /// **'New to AppTemplate?'**
-  String get login_screen_new_to_app;
+  /// **'New to {app_name}?'**
+  String login_screen_new_to_app(String app_name);
 
   /// No description provided for @login_screen_create_account.
   ///
@@ -140,6 +140,30 @@ abstract class ThocAuthLocalizations {
   /// In en, this message translates to:
   /// **'Repeat password'**
   String get repeat_password;
+
+  /// No description provided for @empty_field.
+  ///
+  /// In en, this message translates to:
+  /// **'Field cannot be empty.'**
+  String get empty_field;
+
+  /// No description provided for @invalid_email.
+  ///
+  /// In en, this message translates to:
+  /// **'Email is invalid.'**
+  String get invalid_email;
+
+  /// No description provided for @invalid_password.
+  ///
+  /// In en, this message translates to:
+  /// **'Password is invalid.'**
+  String get invalid_password;
+
+  /// No description provided for @passwords_do_not_match.
+  ///
+  /// In en, this message translates to:
+  /// **'Passwords do not match.'**
+  String get passwords_do_not_match;
 }
 
 class _ThocAuthLocalizationsDelegate extends LocalizationsDelegate<ThocAuthLocalizations> {

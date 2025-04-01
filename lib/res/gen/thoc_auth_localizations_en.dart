@@ -18,7 +18,9 @@ class ThocAuthLocalizationsEn extends ThocAuthLocalizations {
   String get login_screen_sign_in => 'Sign in';
 
   @override
-  String get login_screen_new_to_app => 'New to AppTemplate?';
+  String login_screen_new_to_app(String app_name) {
+    return 'New to $app_name?';
+  }
 
   @override
   String get login_screen_create_account => 'Create an account';
@@ -31,4 +33,16 @@ class ThocAuthLocalizationsEn extends ThocAuthLocalizations {
 
   @override
   String get repeat_password => 'Repeat password';
+
+  @override
+  String get empty_field => 'Field cannot be empty.';
+
+  @override
+  String get invalid_email => 'Email is invalid.';
+
+  @override
+  String get invalid_password => 'Password is invalid.';
+
+  @override
+  String get passwords_do_not_match => 'Passwords do not match.';
 }
