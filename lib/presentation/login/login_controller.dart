@@ -4,7 +4,6 @@ import 'package:thoc_core/architecture/base_controller.dart';
 import 'package:thoc_core/domain/usecases/validate_email_use_case.dart';
 
 class LoginController extends BaseController<LoginState, LoginIntent, LoginEvent> {
-  LoginController() : super(loginEventProvider);
 
   @override
   LoginState buildState() {
@@ -41,5 +40,3 @@ class LoginController extends BaseController<LoginState, LoginIntent, LoginEvent
 
 final loginControllerProvider = NotifierProvider
     .autoDispose<LoginController, LoginState>(LoginController.new);
-
-final loginEventProvider = StateProvider<LoginEvent?>((ref) => null);
