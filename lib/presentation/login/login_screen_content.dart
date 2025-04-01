@@ -8,6 +8,7 @@ import 'package:thoc_widgets/widgets/button/default_primary_button.dart';
 import 'package:thoc_widgets/widgets/other/auth_footer.dart';
 import 'package:thoc_widgets/widgets/other/focus_scaffold.dart';
 import 'package:thoc_widgets/widgets/other/spacers.dart';
+import 'package:thoc_widgets/widgets/text/clickable_text.dart';
 import 'package:thoc_widgets/widgets/text_field/default_input_text_field.dart';
 import 'package:thoc_widgets/widgets/text_field/default_invalid_field_message.dart';
 import 'package:thoc_widgets/widgets/text_field/default_text_field_label.dart';
@@ -63,7 +64,15 @@ class _LoginScreenContentState extends State<LoginScreenContent> {
             ),
             DefaultInvalidFieldMessage(errorMessage: widget.state.emailValidation.error?.getText(context)),
             const RegularSpacer(),
-            DefaultTextFieldLabel(text: context.authStrings.password),
+            Row(
+              children: [
+                Expanded(child: DefaultTextFieldLabel(text: context.authStrings.password)),
+                ClickableText(
+                  text: context.authStrings.login_screen_forgot_password,
+                  onClick: () => widget.onIntent(LoginIntent.forgotPasswordPressed()),
+                ),
+              ],
+            ),
             const SmallSpacer(),
             DefaultInputTextField(
               controller: _passwordController,
