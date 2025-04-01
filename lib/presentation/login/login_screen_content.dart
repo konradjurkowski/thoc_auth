@@ -61,6 +61,7 @@ class _LoginScreenContentState extends State<LoginScreenContent> {
               textInputAction: TextInputAction.next,
               error: widget.state.loginState.hasError,
             ),
+            DefaultInvalidFieldMessage(errorMessage: widget.state.emailValidation.error?.getText(context)),
             const RegularSpacer(),
             DefaultTextFieldLabel(text: context.authStrings.password),
             const SmallSpacer(),
@@ -74,7 +75,6 @@ class _LoginScreenContentState extends State<LoginScreenContent> {
                   ? Icons.visibility_off_outlined : Icons.visibility_outlined,
               onSuffixIconClick: () => widget.onIntent(LoginIntent.togglePasswordVisibility()),
             ),
-            DefaultInvalidFieldMessage(errorMessage: widget.state.emailValidation.error?.getText(context)),
             MediumSpacer(),
             DefaultPrimaryButton(
               text: context.authStrings.login_screen_sign_in,
