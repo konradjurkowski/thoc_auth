@@ -71,8 +71,7 @@ class _LoginScreenContentState extends State<LoginScreenContent> {
               inputType: TextInputType.visiblePassword,
               obscureText: widget.state.obscurePassword,
               error: widget.state.loginState.hasError,
-              suffixIcon: widget.state.obscurePassword
-                  ? Icons.visibility_off_outlined : Icons.visibility_outlined,
+              suffixIcon: widget.state.obscurePassword ? Icons.visibility_off_outlined : Icons.visibility_outlined,
               onSuffixIconClick: () => widget.onIntent(LoginIntent.togglePasswordVisibility()),
             ),
             MediumSpacer(),
