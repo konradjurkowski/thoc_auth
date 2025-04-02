@@ -1,4 +1,6 @@
+import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:thoc_auth/domain/repository/auth_repository.dart';
 import 'package:thoc_auth/presentation/login/ise/login_ise.dart';
 import 'package:thoc_core/architecture/base_controller.dart';
 import 'package:thoc_core/domain/usecases/validate_email_use_case.dart';
@@ -7,12 +9,15 @@ class LoginController extends BaseController<LoginState, LoginIntent, LoginEvent
 
   @override
   LoginState buildState() {
+    _authRepository = ref.read(authRepositoryProvider);
     _validateEmail = ref.read(validateEmailUseCaseProvider);
 
     return const LoginState();
   }
 
+  late AuthRepository _authRepository;
   late ValidateEmailUseCase _validateEmail;
+  final _cancelToken = CancelToken();
 
   @override
   void processIntent(LoginIntent intent) {
@@ -32,9 +37,21 @@ class LoginController extends BaseController<LoginState, LoginIntent, LoginEvent
     if (!emailValidation.successful) return;
 
     state = state.copyWith(loginState: const AsyncLoading());
-    await Future.delayed(const Duration(seconds: 2));
-    state = state.copyWith(loginState: const AsyncData(null));
-    sendEvent(const LoginEvent.goToHome());
+    final result = await _authRepository.login(
+        email: email,
+        password: password,
+        cancelToken: _cancelToken,
+    );
+
+    result.when((failure) {
+      if (failure.isCanceled()) return;
+
+      sendEvent(LoginEvent.showError(failure));
+      state = state.copyWith(loginState: AsyncError(failure, StackTrace.current));
+    }, (_) {
+      sendEvent(const LoginEvent.goToHome());
+      state = state.copyWith(loginState: const AsyncData(null));
+    });
   }
 }
 
