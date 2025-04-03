@@ -9,6 +9,10 @@ abstract class AuthRepository {
     required String password,
     CancelToken? cancelToken,
   });
+  Future<Result<ApiException, void>> resetPassword({
+    required String email,
+    CancelToken? cancelToken,
+  });
 }
 
 final authRepositoryProvider = Provider<AuthRepository>(

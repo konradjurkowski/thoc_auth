@@ -1,21 +1,20 @@
 {
-  "login_screen_title": "Login",
-  "login_screen_forgot_password": "Forgot password?",
-  "login_screen_sign_in": "Sign in",
-  "login_screen_new_to_app": "New to {app_name}?",
-  "@login_screen_new_to_app": {
-    "placeholders": {
-        "app_name": {
-            "type": "String"
-        }
-    }
-  },
-  "login_screen_create_account": "Create an account",
-  "email_address": "Email address",
-  "password": "Password",
-  "repeat_password": "Repeat password",
-  "empty_field": "Field cannot be empty.",
-  "invalid_email": "Email is invalid.",
-  "invalid_password": "Password is invalid.",
-  "passwords_do_not_match": "Passwords do not match."
+    "login_screen_title": "Login",
+    "login_screen_forgot_password": "Forgot password?",
+    "login_screen_sign_in": "Sign in",
+    "login_screen_create_account": "Create an account",
+    "email_address": "Email address",
+    "password": "Password",
+    "repeat_password": "Repeat password",
+    "empty_field": "Field cannot be empty.",
+    "invalid_email": "Email is invalid.",
+    "invalid_password": "Password is invalid.",
+    "passwords_do_not_match": "Passwords do not match.",
+    "login_screen_new_to_app": "New to {app_name}?",
+    "forgot_password_screen_title": "Reset password",
+    "forgot_password_screen_reset_password_success": "You'll receive an email with instructions on how to reset your password.",
+    "forgot_password_screen_reset_password": "Reset password",
+    "register_screen_title": "Register",
+    "register_screen_sign_up": "Sign up",
+    "register_screen_password_requirements": "Your password must be at least 8 characters long and contain at least one special character."
 }

@@ -111,12 +111,6 @@ abstract class ThocAuthLocalizations {
   /// **'Sign in'**
   String get login_screen_sign_in;
 
-  /// No description provided for @login_screen_new_to_app.
-  ///
-  /// In en, this message translates to:
-  /// **'New to {app_name}?'**
-  String login_screen_new_to_app(String app_name);
-
   /// No description provided for @login_screen_create_account.
   ///
   /// In en, this message translates to:
@@ -164,6 +158,48 @@ abstract class ThocAuthLocalizations {
   /// In en, this message translates to:
   /// **'Passwords do not match.'**
   String get passwords_do_not_match;
+
+  /// No description provided for @login_screen_new_to_app.
+  ///
+  /// In en, this message translates to:
+  /// **'New to {app_name}?'**
+  String login_screen_new_to_app(Object app_name);
+
+  /// No description provided for @forgot_password_screen_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset password'**
+  String get forgot_password_screen_title;
+
+  /// No description provided for @forgot_password_screen_reset_password_success.
+  ///
+  /// In en, this message translates to:
+  /// **'You\'ll receive an email with instructions on how to reset your password.'**
+  String get forgot_password_screen_reset_password_success;
+
+  /// No description provided for @forgot_password_screen_reset_password.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset password'**
+  String get forgot_password_screen_reset_password;
+
+  /// No description provided for @register_screen_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Register'**
+  String get register_screen_title;
+
+  /// No description provided for @register_screen_sign_up.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign up'**
+  String get register_screen_sign_up;
+
+  /// No description provided for @register_screen_password_requirements.
+  ///
+  /// In en, this message translates to:
+  /// **'Your password must be at least 8 characters long and contain at least one special character.'**
+  String get register_screen_password_requirements;
 }
 
 class _ThocAuthLocalizationsDelegate extends LocalizationsDelegate<ThocAuthLocalizations> {

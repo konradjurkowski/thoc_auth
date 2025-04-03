@@ -14,8 +14,8 @@ import 'package:thoc_widgets/widgets/text_field/default_invalid_field_message.da
 import 'package:thoc_widgets/widgets/text_field/default_text_field_label.dart';
 import 'package:thoc_widgets/widgets/top_bar/default_top_bar.dart';
 
-class LoginScreenContent extends StatefulWidget {
-  const LoginScreenContent({
+class LoginContent extends StatefulWidget {
+  const LoginContent({
     required this.state,
     required this.onIntent,
     super.key,
@@ -25,10 +25,10 @@ class LoginScreenContent extends StatefulWidget {
   final Function(LoginIntent) onIntent;
 
   @override
-  State<LoginScreenContent> createState() => _LoginScreenContentState();
+  State<LoginContent> createState() => _LoginContentState();
 }
 
-class _LoginScreenContentState extends State<LoginScreenContent> {
+class _LoginContentState extends State<LoginContent> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
@@ -44,11 +44,11 @@ class _LoginScreenContentState extends State<LoginScreenContent> {
     return FocusScaffold(
       appBar: DefaultTopBar(title: context.authStrings.login_screen_title),
       bottomNavigationBar: AuthFooter(
-          firstPart: context.authStrings.login_screen_new_to_app(widget.state.appName),
-          secondPart: " ${context.authStrings.login_screen_create_account}",
-          onClick: () => widget.onIntent(LoginIntent.createAccountPressed()),
+        firstPart: context.authStrings.login_screen_new_to_app(widget.state.appName),
+        secondPart: " ${context.authStrings.login_screen_create_account}",
+        onClick: () => widget.onIntent(LoginIntent.createAccountPressed()),
       ),
-      body: Padding(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.all(WidgetsDimens.padding16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -83,7 +83,7 @@ class _LoginScreenContentState extends State<LoginScreenContent> {
               suffixIcon: widget.state.obscurePassword ? Icons.visibility_off_outlined : Icons.visibility_outlined,
               onSuffixIconClick: () => widget.onIntent(LoginIntent.togglePasswordVisibility()),
             ),
-            MediumSpacer(),
+            const MediumSpacer(),
             DefaultPrimaryButton(
               text: context.authStrings.login_screen_sign_in,
               enabled: widget.state.isButtonEnabled(),

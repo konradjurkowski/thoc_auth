@@ -81,13 +81,6 @@ extension LoginEventExt on LoginEvent {
 }
 
 class LoginState {
-  final String appName;
-  final String email;
-  final ValidationResult emailValidation;
-  final String password;
-  final bool obscurePassword;
-  final AsyncValue<void> loginState;
-
   const LoginState({
     this.appName = "",
     this.email = "",
@@ -96,6 +89,13 @@ class LoginState {
     this.obscurePassword = true,
     this.loginState = const AsyncData(null),
   });
+
+  final String appName;
+  final String email;
+  final ValidationResult emailValidation;
+  final String password;
+  final bool obscurePassword;
+  final AsyncValue<void> loginState;
 
   bool isButtonEnabled() {
     return email.isNotEmpty && password.isNotEmpty;

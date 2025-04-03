@@ -27,11 +27,11 @@ class LoginController extends BaseController<LoginState, LoginIntent, LoginEvent
       togglePasswordVisibility: () => state = state.copyWith(obscurePassword: !state.obscurePassword),
       forgotPasswordPressed: () => sendEvent(const LoginEvent.goToForgotPassword()),
       createAccountPressed: () => sendEvent(const LoginEvent.goToRegister()),
-      loginPressed: (email, password) => signIn(email, password),
+      loginPressed: (email, password) => login(email, password),
     );
   }
 
-  Future<void> signIn(String email, String password) async {
+  Future<void> login(String email, String password) async {
     final emailValidation = _validateEmail.execute(email);
     state = state.copyWith(emailValidation: emailValidation);
     if (!emailValidation.successful) return;
