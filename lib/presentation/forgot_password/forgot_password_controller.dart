@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:thoc_auth/domain/repository/auth_repository.dart';
+import 'package:thoc_auth/navigation/auth_navigation.dart';
 import 'package:thoc_auth/presentation/forgot_password/ise/forgot_password_ise.dart';
 import 'package:thoc_core/architecture/base_controller.dart';
 import 'package:thoc_core/domain/usecases/validate_email_use_case.dart';
@@ -9,12 +10,14 @@ class ForgotPasswordController extends BaseController<ForgotPasswordState, Forgo
 
   @override
   ForgotPasswordState buildState() {
+    _authNavigation = ref.read(authNavigationProvider);
     _authRepository = ref.read(authRepositoryProvider);
     _validateEmail = ref.read(validateEmailUseCaseProvider);
 
     return const ForgotPasswordState();
   }
 
+  late AuthNavigation _authNavigation;
   late AuthRepository _authRepository;
   late ValidateEmailUseCase _validateEmail;
   final _cancelToken = CancelToken();
@@ -22,7 +25,7 @@ class ForgotPasswordController extends BaseController<ForgotPasswordState, Forgo
   @override
   void processIntent(ForgotPasswordIntent intent) {
     intent.when(
-      backPressed: () => sendEvent(ForgotPasswordEvent.navigateBack()),
+      backPressed: () => _authNavigation.navigateBack(),
       emailChanged: (email) => state = state.copyWith(email: email),
       resetPasswordPressed: (email) => resetPassword(email),
     );
@@ -45,7 +48,8 @@ class ForgotPasswordController extends BaseController<ForgotPasswordState, Forgo
       sendEvent(ForgotPasswordEvent.showError(failure));
       state = state.copyWith(resetState: AsyncError(failure, StackTrace.current));
     }, (_) {
-      sendEvent(const ForgotPasswordEvent.goToLogin());
+      _authNavigation.navigateBack();
+      sendEvent(const ForgotPasswordEvent.showSuccess());
       state = state.copyWith(resetState: const AsyncData(null));
     });
   }

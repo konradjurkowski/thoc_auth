@@ -45,6 +45,38 @@ $ForgotPasswordIntentCopyWith(ForgotPasswordIntent _, $Res Function(ForgotPasswo
 /// @nodoc
 
 
+class _BackPressed implements ForgotPasswordIntent {
+  const _BackPressed();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _BackPressed);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'ForgotPasswordIntent.backPressed()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
 class _EmailChanged implements ForgotPasswordIntent {
   const _EmailChanged(this.email);
   
@@ -107,38 +139,6 @@ as String,
 
 
 }
-
-/// @nodoc
-
-
-class _BackPressed implements ForgotPasswordIntent {
-  const _BackPressed();
-  
-
-
-
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _BackPressed);
-}
-
-
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'ForgotPasswordIntent.backPressed()';
-}
-
-
-}
-
-
-
 
 /// @nodoc
 
@@ -239,70 +239,6 @@ $ForgotPasswordEventCopyWith(ForgotPasswordEvent _, $Res Function(ForgotPassword
 /// @nodoc
 
 
-class _NavigateBack implements ForgotPasswordEvent {
-  const _NavigateBack();
-  
-
-
-
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _NavigateBack);
-}
-
-
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'ForgotPasswordEvent.navigateBack()';
-}
-
-
-}
-
-
-
-
-/// @nodoc
-
-
-class _GoToLogin implements ForgotPasswordEvent {
-  const _GoToLogin();
-  
-
-
-
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _GoToLogin);
-}
-
-
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'ForgotPasswordEvent.goToLogin()';
-}
-
-
-}
-
-
-
-
-/// @nodoc
-
-
 class _ShowError implements ForgotPasswordEvent {
   const _ShowError(this.e);
   
@@ -365,5 +301,37 @@ as Exception,
 
 
 }
+
+/// @nodoc
+
+
+class _ShowSuccess implements ForgotPasswordEvent {
+  const _ShowSuccess();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ShowSuccess);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'ForgotPasswordEvent.showSuccess()';
+}
+
+
+}
+
+
+
 
 // dart format on

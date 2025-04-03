@@ -200,6 +200,18 @@ abstract class ThocAuthLocalizations {
   /// In en, this message translates to:
   /// **'Your password must be at least 8 characters long and contain at least one special character.'**
   String get register_screen_password_requirements;
+
+  /// No description provided for @first_name.
+  ///
+  /// In en, this message translates to:
+  /// **'First name'**
+  String get first_name;
+
+  /// No description provided for @last_name.
+  ///
+  /// In en, this message translates to:
+  /// **'Last name'**
+  String get last_name;
 }
 
 class _ThocAuthLocalizationsDelegate extends LocalizationsDelegate<ThocAuthLocalizations> {

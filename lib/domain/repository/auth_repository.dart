@@ -9,6 +9,13 @@ abstract class AuthRepository {
     required String password,
     CancelToken? cancelToken,
   });
+  Future<Result<ApiException, void>> register({
+    required String firstName,
+    required String lastName,
+    required String email,
+    required String password,
+    CancelToken? cancelToken,
+  });
   Future<Result<ApiException, void>> resetPassword({
     required String email,
     CancelToken? cancelToken,

@@ -16,5 +16,7 @@
     "forgot_password_screen_reset_password": "Reset password",
     "register_screen_title": "Register",
     "register_screen_sign_up": "Sign up",
-    "register_screen_password_requirements": "Your password must be at least 8 characters long and contain at least one special character."
+    "register_screen_password_requirements": "Your password must be at least 8 characters long and contain at least one special character.",
+    "first_name": "First name",
+    "last_name": "Last name"
 }

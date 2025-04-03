@@ -63,4 +63,10 @@ class ThocAuthLocalizationsEn extends ThocAuthLocalizations {
 
   @override
   String get register_screen_password_requirements => 'Your password must be at least 8 characters long and contain at least one special character.';
+
+  @override
+  String get first_name => 'First name';
+
+  @override
+  String get last_name => 'Last name';
 }

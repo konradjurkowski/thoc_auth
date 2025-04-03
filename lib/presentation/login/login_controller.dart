@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:thoc_auth/domain/repository/auth_repository.dart';
+import 'package:thoc_auth/navigation/auth_navigation.dart';
 import 'package:thoc_auth/presentation/login/ise/login_ise.dart';
 import 'package:thoc_core/architecture/base_controller.dart';
 import 'package:thoc_core/domain/usecases/validate_email_use_case.dart';
@@ -9,12 +10,14 @@ class LoginController extends BaseController<LoginState, LoginIntent, LoginEvent
 
   @override
   LoginState buildState() {
+    _authNavigation = ref.read(authNavigationProvider);
     _authRepository = ref.read(authRepositoryProvider);
     _validateEmail = ref.read(validateEmailUseCaseProvider);
 
     return const LoginState();
   }
 
+  late AuthNavigation _authNavigation;
   late AuthRepository _authRepository;
   late ValidateEmailUseCase _validateEmail;
   final _cancelToken = CancelToken();
@@ -25,8 +28,8 @@ class LoginController extends BaseController<LoginState, LoginIntent, LoginEvent
       emailChanged: (email) => state = state.copyWith(email: email),
       passwordChanged: (password) => state = state.copyWith(password: password),
       togglePasswordVisibility: () => state = state.copyWith(obscurePassword: !state.obscurePassword),
-      forgotPasswordPressed: () => sendEvent(const LoginEvent.goToForgotPassword()),
-      createAccountPressed: () => sendEvent(const LoginEvent.goToRegister()),
+      forgotPasswordPressed: () => _authNavigation.navigateToForgotPassword(),
+      createAccountPressed: () => _authNavigation.navigateToRegister(),
       loginPressed: (email, password) => login(email, password),
     );
   }
@@ -49,7 +52,7 @@ class LoginController extends BaseController<LoginState, LoginIntent, LoginEvent
       sendEvent(LoginEvent.showError(failure));
       state = state.copyWith(loginState: AsyncError(failure, StackTrace.current));
     }, (_) {
-      sendEvent(const LoginEvent.goToHome());
+      _authNavigation.navigateToHome();
       state = state.copyWith(loginState: const AsyncData(null));
     });
   }

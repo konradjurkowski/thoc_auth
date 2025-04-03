@@ -341,127 +341,62 @@ as String,
 /// @nodoc
 mixin _$LoginEvent {
 
-
+ Exception get e;
+/// Create a copy of LoginEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$LoginEventCopyWith<LoginEvent> get copyWith => _$LoginEventCopyWithImpl<LoginEvent>(this as LoginEvent, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is LoginEvent);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is LoginEvent&&(identical(other.e, e) || other.e == e));
 }
 
 
 @override
-int get hashCode => runtimeType.hashCode;
+int get hashCode => Object.hash(runtimeType,e);
 
 @override
 String toString() {
-  return 'LoginEvent()';
+  return 'LoginEvent(e: $e)';
 }
 
 
 }
 
 /// @nodoc
-class $LoginEventCopyWith<$Res>  {
-$LoginEventCopyWith(LoginEvent _, $Res Function(LoginEvent) __);
+abstract mixin class $LoginEventCopyWith<$Res>  {
+  factory $LoginEventCopyWith(LoginEvent value, $Res Function(LoginEvent) _then) = _$LoginEventCopyWithImpl;
+@useResult
+$Res call({
+ Exception e
+});
+
+
+
+
 }
-
-
 /// @nodoc
+class _$LoginEventCopyWithImpl<$Res>
+    implements $LoginEventCopyWith<$Res> {
+  _$LoginEventCopyWithImpl(this._self, this._then);
 
+  final LoginEvent _self;
+  final $Res Function(LoginEvent) _then;
 
-class _GoToHome implements LoginEvent {
-  const _GoToHome();
-  
-
-
-
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _GoToHome);
+/// Create a copy of LoginEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? e = null,}) {
+  return _then(_self.copyWith(
+e: null == e ? _self.e : e // ignore: cast_nullable_to_non_nullable
+as Exception,
+  ));
 }
 
-
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'LoginEvent.goToHome()';
 }
-
-
-}
-
-
-
-
-/// @nodoc
-
-
-class _GoToForgotPassword implements LoginEvent {
-  const _GoToForgotPassword();
-  
-
-
-
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _GoToForgotPassword);
-}
-
-
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'LoginEvent.goToForgotPassword()';
-}
-
-
-}
-
-
-
-
-/// @nodoc
-
-
-class _GoToRegister implements LoginEvent {
-  const _GoToRegister();
-  
-
-
-
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _GoToRegister);
-}
-
-
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'LoginEvent.goToRegister()';
-}
-
-
-}
-
-
 
 
 /// @nodoc
@@ -471,11 +406,11 @@ class _ShowError implements LoginEvent {
   const _ShowError(this.e);
   
 
- final  Exception e;
+@override final  Exception e;
 
 /// Create a copy of LoginEvent
 /// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
+@override @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 _$ShowErrorCopyWith<_ShowError> get copyWith => __$ShowErrorCopyWithImpl<_ShowError>(this, _$identity);
 
@@ -501,7 +436,7 @@ String toString() {
 /// @nodoc
 abstract mixin class _$ShowErrorCopyWith<$Res> implements $LoginEventCopyWith<$Res> {
   factory _$ShowErrorCopyWith(_ShowError value, $Res Function(_ShowError) _then) = __$ShowErrorCopyWithImpl;
-@useResult
+@override @useResult
 $Res call({
  Exception e
 });
@@ -520,7 +455,7 @@ class __$ShowErrorCopyWithImpl<$Res>
 
 /// Create a copy of LoginEvent
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? e = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? e = null,}) {
   return _then(_ShowError(
 null == e ? _self.e : e // ignore: cast_nullable_to_non_nullable
 as Exception,

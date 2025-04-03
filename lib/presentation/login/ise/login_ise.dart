@@ -50,29 +50,14 @@ extension LoginIntentExt on LoginIntent {
 
 @freezed
 sealed class LoginEvent with _$LoginEvent {
-  const factory LoginEvent.goToHome() = _GoToHome;
-  const factory LoginEvent.goToForgotPassword() = _GoToForgotPassword;
-  const factory LoginEvent.goToRegister() = _GoToRegister;
   const factory LoginEvent.showError(Exception e) = _ShowError;
 }
 
 extension LoginEventExt on LoginEvent {
   void when({
-    required void Function() goToHome,
-    required void Function() goToForgotPassword,
-    required void Function() goToRegister,
     required void Function(Exception e) showError,
   }) {
     switch (this) {
-      case _GoToHome():
-        goToHome.call();
-        break;
-      case _GoToForgotPassword():
-        goToForgotPassword.call();
-        break;
-      case _GoToRegister():
-        goToRegister.call();
-        break;
       case _ShowError(:final e):
         showError.call(e);
         break;
